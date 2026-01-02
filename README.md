@@ -73,7 +73,7 @@ python train_runner.py
 ```bash
 python inference.py
 ```
-> 실행이 완료되면 폴더에 `my_submission.csv` 파일이 생성됩니다. 이 파일을 캐글에 제출하면 됩니다.
+> 실행이 완료되면 폴더에 `final_result.csv` 파일이 생성됩니다. 이 파일을 캐글에 제출하면 됩니다.
 
 ---
 

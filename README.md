@@ -60,3 +60,9 @@ PyTorch 모델이 학습할 수 있는 형태(Tensor)로 데이터를 변환하�
 ### 1. 환경 설정
 ```bash
 pip install torch torchvision pandas opencv-python tqdm
+
+### 2. 학습 시작(Train)
+모델 학습을 진행하고 best_model.pth를 생성합니다.
+```bash
+python train_runner.py
+

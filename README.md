@@ -60,9 +60,24 @@ PyTorch 모델이 학습할 수 있는 형태(Tensor)로 데이터를 변환하�
 ### 1. 환경 설정
 ```bash
 pip install torch torchvision pandas opencv-python tqdm
+```
 
-### 2. 학습 시작(Train)
-모델 학습을 진행하고 best_model.pth를 생성합니다.
+### 2. 학습 시작
+모델 학습을 진행하고 `best_model.pth`를 생성합니다.
 ```bash
 python train_runner.py
+```
 
+### 3. 결과 추론 (제출 파일 생성)
+학습된 모델로 테스트 데이터를 예측합니다.
+```bash
+python inference.py
+```
+> 실행이 완료되면 폴더에 `my_submission.csv` 파일이 생성됩니다. 이 파일을 캐글에 제출하면 됩니다.
+
+---
+
+## 📊 학습 결과 요약
+* **Input Shape:** `(Batch_Size, 7, 224, 224)`
+* **Output Shape:** `(Batch_Size, 15)`
+* **Best Model:** 학습 중 Validation Loss가 최소인 지점에서 자동 저장된 모델 사용.

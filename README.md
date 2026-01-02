@@ -71,7 +71,7 @@ python train_runner.py
 ### 3. 결과 추론 (제출 파일 생성)
 학습된 모델로 테스트 데이터를 예측합니다.
 ```bash
-python inference.py
+python final_result.py
 ```
 > 실행이 완료되면 폴더에 `final_result.csv` 파일이 생성됩니다. 이 파일을 캐글에 제출하면 됩니다.
 

@@ -13,7 +13,7 @@ def load_and_preprocess_image(path, size=(256, 256), is_mask=False):
         # rail 마스크는 흑백 이미지로 읽기
         img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)   # shape: (H, W)
     else:
-        # 일반 이미지는 컬러로 읽기 (BGR → RGB 변환)
+        # 일반 이미지는 컬러로 읽기 (BGR -> RGB 변환)
         img = cv2.imread(path, cv2.IMREAD_COLOR)       # shape: (H, W, 3)
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
@@ -21,7 +21,7 @@ def load_and_preprocess_image(path, size=(256, 256), is_mask=False):
         raise FileNotFoundError(f"이미지를 읽을 수 없습니다: {path}")
 
     # 2) resize
-    img = cv2.resize(img, size)  # (세로, 가로) 순이지만 size가 (가로,세로)라 그대로 줘도 됨
+    img = cv2.resize(img, size)  
 
     # 3) float으로 변환 후 0~1로 normalize
     img = img.astype("float32") / 255.0

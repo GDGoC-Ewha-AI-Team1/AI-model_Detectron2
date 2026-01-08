@@ -5,7 +5,7 @@ from torch.utils.data import DataLoader
 from sklearn.model_selection import train_test_split
 from torchvision import transforms
 
-# 방금 수정한 dataset 파일 불러오기
+# dataset 파일 불러오기
 from my_dataset import LevelCrossingDataset 
 
 def main():
@@ -46,7 +46,7 @@ def main():
     train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
     val_loader = DataLoader(val_dataset, batch_size=BATCH_SIZE, shuffle=False)
 
-    # --- 테스트 코드 ---
+    # 테스트 코드 
     print("\n[데이터 로더 테스트 중...]")
     try:
         images, targets = next(iter(train_loader))

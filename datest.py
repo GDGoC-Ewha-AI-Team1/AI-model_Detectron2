@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 from torch.utils.data import Dataset
 
-# 너가 만든 전처리 함수 가져오기
+# 전처리 함수 가져오기
 from preprocess import load_and_preprocess_image
 
 class RailDataset(Dataset):
@@ -42,13 +42,13 @@ class RailDataset(Dataset):
         img2 = load_and_preprocess_image(img2_path, size=self.size, is_mask=False)
         rail = load_and_preprocess_image(rail_path, size=self.size, is_mask=True)
 
-        # 3) rail은 1채널 → 채널 차원 추가
+        # 3) rail은 1채널-> 채널 차원 추가
         rail = np.expand_dims(rail, axis=-1)
 
         # 4) target 15개 불러오기
         target = row[self.target_cols].values.astype("float32")
 
-        # 5) numpy → torch tensor (HWC → CHW)
+        # 5) numpy -> torch tensor (HWC -> CHW)
         img1 = torch.tensor(img1).permute(2, 0, 1)
         img2 = torch.tensor(img2).permute(2, 0, 1)
         rail = torch.tensor(rail).permute(2, 0, 1)

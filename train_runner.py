@@ -12,14 +12,14 @@ from my_dataset import LevelCrossingDataset
 from model import LevelCrossingModel
 
 def main():
-    # --- [4단계 관련 설정] ---
+    # [4단계 관련 설정] 
     BATCH_SIZE = 16
     LEARNING_RATE = 0.0001  # 1e-4 
     EPOCHS = 10 
     DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     print(f"사용 장치: {DEVICE}")
 
-    # --- 데이터 준비 ---
+    # 데이터 준비 
     print("데이터 준비 중...")
     df = pd.read_csv('./train.csv', header=0)
     train_df, val_df = train_test_split(df, test_size=0.2, random_state=42)
@@ -35,17 +35,17 @@ def main():
     train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
     val_loader = DataLoader(val_dataset, batch_size=BATCH_SIZE, shuffle=False)
 
-    # --- 모델 준비 ---
+    # 모델 준비 
     model = LevelCrossingModel().to(DEVICE)
 
-    # --- [4단계 핵심 코드] 손실 함수 및 최적화 설정 ---
+    # [4단계 핵심 코드] 손실 함수 및 최적화 설정 
     # 1. Loss: MSELoss (RMSE 평가 기준 대응)
     criterion = nn.MSELoss() 
     
     # 2. Optimizer: Adam (Learning Rate 1e-4)
     optimizer = optim.Adam(model.parameters(), lr=LEARNING_RATE)
 
-    # --- 5단계: 학습 루프 (Training Loop) ---
+    # 5단계: 학습 루프 (Training Loop) 
     print("\n[학습 시작!]")
     best_val_loss = float('inf')
 
@@ -67,7 +67,7 @@ def main():
             if (i+1) % 10 == 0:
                 print(f"Epoch [{epoch+1}/{EPOCHS}], Step [{i+1}/{len(train_loader)}], Loss: {loss.item():.4f}")
 
-        # 검증 (시험)
+        # 검증 
         model.eval()
         val_loss = 0.0
         with torch.no_grad():
